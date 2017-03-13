@@ -83,6 +83,8 @@ public class core {
 		    	  	}
 		    	  	amneg_logic amn_logic = new amneg_logic();
 		    	  	System.out.println("permno: "+amneg_list.get(i).permno);
+		    	  	System.out.println("amneg_id: "+amneg_list.get(i).amneg_id);
+		    	  	//System.out.println("date_id: "+prc_diff.get(i)[1]);
 		    	  	ArrayList<double[]> amneg_reslt =  amn_logic.amneg_find(prc_diff);
 		    	  	String inst_amneg_rlt = "";
 		    	  	for (int j = 0; j < amneg_reslt.size(); j++) {
