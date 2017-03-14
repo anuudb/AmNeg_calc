@@ -83,19 +83,23 @@ public class core {
 		    	  	}
 		    	  	amneg_logic amn_logic = new amneg_logic();
 		    	  	System.out.println("permno: "+amneg_list.get(i).permno);
-		    	  	System.out.println("amneg_id: "+amneg_list.get(i).amneg_id);
-		    	  	//System.out.println("date_id: "+prc_diff.get(i)[1]);
 		    	  	ArrayList<double[]> amneg_reslt =  amn_logic.amneg_find(prc_diff);
-		    	  	String inst_amneg_rlt = "";
-		    	  	for (int j = 0; j < amneg_reslt.size(); j++) {
-		    	  		 if(j!=0){
-		    	  			 inst_amneg_rlt = inst_amneg_rlt+"," +"("+amneg_list.get(i).permno+","+amneg_list.get(i).amneg_id+","+amneg_reslt.get(j)[1]+","+amneg_reslt.get(j)[0]+")";
-		    	  		 }else{
-		    	  			inst_amneg_rlt = inst_amneg_rlt+"" +"("+amneg_list.get(i).permno+","+amneg_list.get(i).amneg_id+","+amneg_reslt.get(j)[1]+","+amneg_reslt.get(j)[0]+")"; 
-		    	  		 }
+		    	  	
+		    	  	if(!amneg_reslt.isEmpty()){		
+			    	  	String inst_amneg_rlt = "";
+			    	  	for (int j = 0; j < amneg_reslt.size(); j++) {
+			    	  		 if(j!=0){
+			    	  			 inst_amneg_rlt = inst_amneg_rlt+"," +"("+amneg_list.get(i).permno+","+amneg_list.get(i).amneg_id+","+amneg_reslt.get(j)[2]+","+amneg_reslt.get(j)[1]+","+amneg_reslt.get(j)[0]+")";
+			    	  		 }else{
+			    	  			inst_amneg_rlt = inst_amneg_rlt+"" +"("+amneg_list.get(i).permno+","+amneg_list.get(i).amneg_id+","+amneg_reslt.get(j)[2]+","+amneg_reslt.get(j)[1]+","+amneg_reslt.get(j)[0]+")"; 
+			    	  		 }
+			    	  	}
+			    	  	String inst_amneg_rlt_hdr = "INSERT INTO amNeg_result_final (permno,amneg_id,date_id,PseudoPRC_diff,slope_id) VALUES ";
+					    System.out.println(inst_amneg_rlt_hdr + inst_amneg_rlt);
+					    String insrt_q = inst_amneg_rlt_hdr + inst_amneg_rlt;
+					    stmt.execute(insrt_q);
 		    	  	}
-		    	  	String inst_amneg_rlt_hdr = "INSERT INTO amNeg_result_final (permno,amneg_id,date_id,PseudoPRC_diff) VALUES ";
-				    //System.out.println(inst_amneg_rlt_hdr + inst_amneg_rlt);
+				    
 		      }
 		      
 		      stmt.close();

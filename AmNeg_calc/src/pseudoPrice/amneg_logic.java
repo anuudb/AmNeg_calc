@@ -34,45 +34,51 @@ public class amneg_logic {
 						result[0] = amneg_slop_id;
 						result[1] = prc_diff.get(i)[0];
 						result[2] = prc_diff.get(i)[1];
+						
+							//System.out.println("0 : "+result[0]+" "+result[1]+" "+result[2]);
+						
+						
 						result_list.add(result);
 						
-						/*
-						System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-						System.out.println("aaaaaaaa: "+a);*/
+						
+//						System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
 						a++;
 						
 						//System.out.println("length : "+prc_diff.size());
 						if((i+2 == prc_diff.size())){
-							double[] result1 = new double[3];
-							result1[0] = amneg_slop_id;
-							result1[1] = prc_diff.get(i+1)[0];
-							result1[2] = prc_diff.get(i+1)[1];
-							result_list.add(result1);
+							double[] result11 = new double[3];
+							result11[0] = amneg_slop_id;
+							result11[1] = prc_diff.get(i+1)[0];
+							result11[2] = prc_diff.get(i+1)[1];
 							
-							/*System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-							System.out.println("aaaaaaaa: *************"+a);
-							System.out.println("______________________________________");*/
+								//System.out.println("1st : "+result[0]+" "+result[1]+" "+result[2]);
+							
+							result_list.add(result11);
+							
+							
+//							System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
+//							System.out.println("______________________________________");
 							
 							a++;
 							amneg_slop_id++;
 							j = 0;
+							break;
 						}
 						else if(prc_diff.get(i+2)[0]>0 || ((2 * prc_diff.get(i+2)[0]) > prc_diff.get(i+1)[0])){
-							double[] result2 = new double[3];
-							result2[0] = amneg_slop_id;
-							result2[1] = prc_diff.get(i+1)[0];
-							result2[2] = prc_diff.get(i+1)[1];
-							result_list.add(result2);
+							double[] result111 = new double[3];
+							result111[0] = amneg_slop_id;
+							result111[1] = prc_diff.get(i+1)[0];
+							result111[2] = prc_diff.get(i+1)[1];
+							result_list.add(result111);
 							
-							/*System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-							System.out.println("aaaaaaaa: "+a);
-							System.out.println("______________________________________");*/
+								//System.out.println("2nd : "+result[0]+" "+result[1]+" "+result[2]);
+							
+							
+//							System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
+//							System.out.println("______________________________________");
 							a++;
 							amneg_slop_id++;
 							j = 0;
-							/*for(int w=0; w < a; w++){
-								System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-							}*/
 						}
 						else{
 							continue;
@@ -86,11 +92,9 @@ public class amneg_logic {
 			else{
 				continue;
 			}
-		}
-		for(int w=0; w < a; w++){
-			System.out.println("slop id: "+result_list.get(w)[0]+" val: "+result_list.get(w)[1]+" d_id: "+result_list.get(w)[2]);
-			System.out.println("aaaaaaaaaaaaaa        :"+a);
-			System.out.println("wwwwwwwwwwwwww        :"+w);
+			/*for(int w=0; w <= a; w++){
+				System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
+			}*/
 		}
 		
 		/*for (int i = 0; i < prc_diff.size(); i++) {
@@ -106,6 +110,10 @@ public class amneg_logic {
 		}*/
 		//System.out.println("anushka \n"+prc_diff);
 		
-		return prc_diff;
+		/*for (int k = 0; k < result_list.size(); k++) {
+			System.out.println("h : "+result_list.get(k)[0]+" "+result_list.get(k)[1]+" "+result_list.get(k)[2]);
+		}*/
+		
+		return result_list;
 	}
 }
