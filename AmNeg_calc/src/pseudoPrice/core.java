@@ -47,14 +47,14 @@ public class core {
 		      String sql,sql_company;
 		      
 		      
-		      sql_company = "SELECT PERMNO,amneg_id,dateMax_index,dateMin_index FROM amneg_2004";
+		      sql_company = "SELECT PERMNO,id,dateMax_index,dateMin_index FROM amneg";
 		      ResultSet amnegs = stmt.executeQuery(sql_company);
 		      //System.out.println("anushka");
 		      
 		      while (amnegs.next()) {
 		    	  amneg amn = new amneg();
 					amn.permno = amnegs.getInt("PERMNO");
-					amn.amneg_id = amnegs.getInt("amneg_id");
+					amn.amneg_id = amnegs.getInt("id");
 					amn.dateMax_index = amnegs.getInt("dateMax_index");
 					amn.dateMin_index = amnegs.getInt("dateMin_index");
 					amneg_list.add(amn);

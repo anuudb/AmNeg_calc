@@ -14,82 +14,73 @@ public class amneg_logic {
 		
 		ArrayList<Double> prc_concecative_neg = new ArrayList<Double>();
 		ArrayList<double[]> result_list = new ArrayList<double[]>() ;
-		int a =0;
 		
 		for(int i = 0; i < prc_diff.size()-1; i++){
-			if(j == 7){ // Pre-mentioned condition that maximum range of a amNeg slop must be less than or equal to 7
-				i = i - j;
-				j=0;
-				System.out.println("Limit exceed ...**************************************************");
-				break;
-			}
-			else if(prc_diff.get(i)[0]<0){ // checking the value is a significant drop or not
+			if(prc_diff.get(i)[0]<0){ // checking the value is a significant drop or not
 				if(prc_diff.get(i+1)[0]<0){ // checking the next value is a significant drop or not
-					double x = prc_diff.get(i)[0] + prc_diff.get(i+1)[0];
-					double y = (prc_diff.get(i)[0] * 1.5);
-					double z = (prc_diff.get(i+1)[0] * 1.5);
-					if(((x<=y) && (x<=z)) || ((x<=y) && (x>z))){ // Condition
-						j++;
-						double[] result = new double[3];
-						result[0] = amneg_slop_id;
-						result[1] = prc_diff.get(i)[0];
-						result[2] = prc_diff.get(i)[1];
+					double[] result = new double[3];
+					result[0] = amneg_slop_id;
+					result[1] = prc_diff.get(i)[0];
+					result[2] = prc_diff.get(i)[1];
+					
+						//System.out.println("0 : "+result[0]+" "+result[1]+" "+result[2]);
+					
+					
+					result_list.add(result);
+					j++;
+					//System.out.println("length : "+prc_diff.size());
+					if(j==7){
+						/*double[] resultnew = new double[3];
+						resultnew[0] = 0;
+						resultnew[1] = 0;
+						resultnew[2] = 0;
+						result_list.add(resultnew);*/
+						amneg_slop_id++;
+						j=0;
+					}
+					else if((i+2 == prc_diff.size())){
+						double[] result11 = new double[3];
+						result11[0] = amneg_slop_id;
+						result11[1] = prc_diff.get(i+1)[0];
+						result11[2] = prc_diff.get(i+1)[1];
 						
-							//System.out.println("0 : "+result[0]+" "+result[1]+" "+result[2]);
+							//System.out.println("1st : "+result[0]+" "+result[1]+" "+result[2]);
 						
+						result_list.add(result11);
 						
-						result_list.add(result);
+//						System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
+//						System.out.println("______________________________________");
+						amneg_slop_id++;
+						j = 0;
+						break;
+					}
+					else if(prc_diff.get(i+2)[0]>=0 ){
+						double[] result111 = new double[3];
+						result111[0] = amneg_slop_id;
+						result111[1] = prc_diff.get(i+1)[0];
+						result111[2] = prc_diff.get(i+1)[1];
+						result_list.add(result111);
+						
+							//System.out.println("2nd : "+result[0]+" "+result[1]+" "+result[2]);
 						
 						
 //						System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-						a++;
+//						System.out.println("______________________________________");
+						amneg_slop_id++;
+						j = 0;
 						
-						//System.out.println("length : "+prc_diff.size());
-						if((i+2 == prc_diff.size())){
-							double[] result11 = new double[3];
-							result11[0] = amneg_slop_id;
-							result11[1] = prc_diff.get(i+1)[0];
-							result11[2] = prc_diff.get(i+1)[1];
-							
-								//System.out.println("1st : "+result[0]+" "+result[1]+" "+result[2]);
-							
-							result_list.add(result11);
-							
-							
-//							System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-//							System.out.println("______________________________________");
-							
-							a++;
-							amneg_slop_id++;
-							j = 0;
-							break;
-						}
-						else if(prc_diff.get(i+2)[0]>0 || ((2 * prc_diff.get(i+2)[0]) > prc_diff.get(i+1)[0])){
-							double[] result111 = new double[3];
-							result111[0] = amneg_slop_id;
-							result111[1] = prc_diff.get(i+1)[0];
-							result111[2] = prc_diff.get(i+1)[1];
-							result_list.add(result111);
-							
-								//System.out.println("2nd : "+result[0]+" "+result[1]+" "+result[2]);
-							
-							
-//							System.out.println("slop id: "+result_list.get(a)[0]+" val: "+result_list.get(a)[1]+" d_id: "+result_list.get(a)[2]);
-//							System.out.println("______________________________________");
-							a++;
-							amneg_slop_id++;
-							j = 0;
-						}
-						else{
-							continue;
-						}
+					}
+					else{
+						continue;
 					}
 				}
 				else{
+					j = 0;
 					continue;
 				}
 			}
 			else{
+				j = 0;
 				continue;
 			}
 			/*for(int w=0; w <= a; w++){
